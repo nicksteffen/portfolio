@@ -3,6 +3,8 @@ import { Card, CardContent, CardMedia, Typography, Button, Chip,
     Stack, Box, Divider, Link } from '@mui/material';
   import NextLink from 'next/link';
   import { Project } from '@/types/project'; // Define your project type (see below)
+//   import LinkedInIcon from '@mui/icons-material/LinkedIn';
+  import { GitHub } from '@mui/icons-material';
   
   type ProjectCardProps = {
     project: Project;
@@ -95,12 +97,19 @@ import { Card, CardContent, CardMedia, Typography, Button, Chip,
               variant="outlined"
               size="small"
               startIcon={
-                <Box
-                  component="img"
-                  src="/portfolio/github-mark.svg" // Place GitHub logo in public folder
-                  alt="GitHub"
-                  sx={{ width: 16, height: 16 }}
-                />
+                <GitHub 
+                fontSize="small" 
+                sx={{ color: 'text.primary' }} 
+              />
+
+
+
+                // <Box
+                //   component="img"
+                //   src="/portfolio/github-mark.svg" // Place GitHub logo in public folder
+                //   alt="GitHub"
+                //   sx={{ width: 16, height: 16 }}
+                // />
               }
             >
               {project.githubUrls.length > 1 ? `Repo ${index + 1}` : 'GitHub'}

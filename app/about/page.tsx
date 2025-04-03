@@ -1,12 +1,57 @@
-import { Container, Typography } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Container, Divider, Grid2, Typography } from "@mui/material";
 
 
 
 export default function About() {
     return (
+        <>
         <Container maxWidth="md" sx={{ textAlign: 'center', mt: 5 }}>
         <Typography variant="h3" gutterBottom>About Me</Typography>
         <Typography variant="body1">I am a software engineer with a passion for building impactful applications. With over 7 years of experience, I specialize in full-stack development and problem-solving.</Typography>
       </Container>
+
+      <Box sx={{ flexGrow: 1, p: 4 }}>
+      <Grid2 container spacing={4} justifyContent="center" alignItems="center">
+        {/* Profile Image */}
+        <Grid2 >
+          <Card sx={{ maxWidth: 345, boxShadow: 3 }}>
+            <CardMedia
+              component="img"
+              height="300"
+              image="/profile.jpg"  // Replace with your actual image path
+              alt="Nicholas Steffen"
+            />
+          </Card>
+        </Grid2>
+
+        {/* About Me Section */}
+        <Grid2> 
+          <Card sx={{ boxShadow: 3, p: 2 }}>
+            <CardContent>
+              <Typography variant="h4" gutterBottom>
+                Nicholas Steffen
+              </Typography>
+              <Typography variant="h6" color="text.secondary" gutterBottom>
+                Software Engineer | AI & Web Development Enthusiast
+              </Typography>
+              <Divider sx={{ mb: 2 }} />
+              <Typography variant="body1" paragraph>
+                I am a passionate software engineer with over 7 years of experience in backend and full-stack development. I specialize in Python, Java, and modern web frameworks like Next.js and Vue.js. My career has been driven by a commitment to leveraging technology for meaningful impact, particularly in healthcare, non-profits, and social good initiatives.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Most recently, I worked at ClearlyRated, where I built scalable web applications, optimized data-driven solutions, and enhanced user experiences. Prior to that, I contributed to mission-critical projects at Raytheon, honing my expertise in high-performance software systems.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Currently, I am exploring opportunities that align with my technical skills and passion for impactful solutions. Whether it's AI-driven insights, web development, or data engineering, I thrive in dynamic environments that challenge me to grow and innovate.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid2>
+      </Grid2>
+    </Box>
+
+
+      
+        </>
     )
 }
