@@ -29,7 +29,8 @@ import { Card, CardContent, CardMedia, Typography, Button, Chip,
           <CardMedia
             component="img"
             height="140"
-            image={project.image}
+            image={`/portfolio/${project.image}`}
+
             alt={project.title}
             sx={{ objectFit: 'cover' }}
           />
@@ -96,7 +97,7 @@ import { Card, CardContent, CardMedia, Typography, Button, Chip,
               startIcon={
                 <Box
                   component="img"
-                  src="/github-mark.svg" // Place GitHub logo in public folder
+                  src="/portfolio/github-mark.svg" // Place GitHub logo in public folder
                   alt="GitHub"
                   sx={{ width: 16, height: 16 }}
                 />

@@ -23,10 +23,17 @@
 
 
 
-
+'use client'
 import { AppBar, Button, Toolbar } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 export default function TopNavBar() {
+
+
+    const router = useRouter();
+
+
+    
     const pages = ['About', 'Projects', 'Contact'];
   return (
     <AppBar position="static"
@@ -49,7 +56,7 @@ export default function TopNavBar() {
         {/* always have home page */}
         <Button
             key={"Home"}
-            href="/"
+            onClick={() => router.push('/')}
             variant="contained"
             size="large"
             sx={{
@@ -72,7 +79,8 @@ export default function TopNavBar() {
         {pages.map((page) => (
           <Button
             key={page}
-            href={`/${page.toLowerCase()}`}
+            // href={`/${page.toLowerCase()}`}
+            onClick={() => router.push(`/${page.toLowerCase()}`)}
             variant="contained"
             size="large"
             sx={{
