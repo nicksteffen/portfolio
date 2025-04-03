@@ -16,7 +16,6 @@ export default function Projects() {
                 <Typography variant="body1">Here are some of the projects I have worked on, including open-source contributions and personal projects.</Typography>
                 <Grid container spacing={3}>
                     {projects.map((project) => (
-                        // <Grid  key={project.id} xs={12} sm={6} md={4}>
                         <Grid  key={project.id}>
                             <ProjectCard project={project} />
                         </Grid>
