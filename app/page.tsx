@@ -15,7 +15,7 @@ export default function Home() {
                 Software Engineer | Full-Stack Developer
             </Typography>
         <Box mt={3}>
-          <Button variant="contained" color="primary" href="/resume.pdf" target="_blank" >
+          <Button variant="contained" color="primary" href="portfolio/resume.pdf" target="_blank" >
             Download Resume
           </Button>
         </Box>
