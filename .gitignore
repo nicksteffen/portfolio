@@ -1,0 +1,18 @@
+# Next.js
+.next/
+out/
+
+# Production
+*.log
+*.pid
+*.gz
+
+# Dependency directories
+node_modules/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
