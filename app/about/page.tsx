@@ -18,6 +18,8 @@ import {
   import NextLink from 'next/link';
 import Grid from "@mui/material/Grid2"; // Add this line to import Grid
 import Skills from "../components/aboutSections/Skills";
+import ExperienceSection from "../components/aboutSections/ExperienceSection";
+import Profile from "../components/aboutSections/Profile";
   
   export default function About() {
     const theme = useTheme();
@@ -31,89 +33,7 @@ import Skills from "../components/aboutSections/Skills";
     return (
       <Container maxWidth="lg" sx={{ py: 6 }}>
         <Grid container spacing={2} alignItems="stretch">
-          {/* Profile Section */}
-          {/* xs={12} md={4}  */}
-          <Grid sx={{ display: 'flex'}}  size={{xs: 12, md: 4 }} >
-            <Card sx={{ 
-              height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              boxShadow: 3,
-              borderRadius: 2,
-              overflow: 'hidden'
-            }}>
-              <CardMedia
-                component="img"
-                height="300"
-                image="/portfolio/images/profile.jpg"
-                alt="Nicholas Steffen"
-                sx={{ objectFit: 'cover' }}
-              />
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography variant="h4" component="h1" gutterBottom>
-                  Nicholas Steffen
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary" gutterBottom sx={{ mb: 3 }} >
-                  Software Engineer | AI & Web Development Enthusiast
-                </Typography>
-                
-                <Divider sx={{ my: 2 }} />
-                
-                <Stack spacing={2} sx={{ mt: 3 }}>
-                  <Stack direction="row" spacing={1} alignItems="center">
-                    <Work color="primary" />
-                    <Typography>
-                      <strong>Experience:</strong> 7+ years
-                    </Typography>
-                  </Stack>
-                  
-                  <Stack direction="row" spacing={1} alignItems="center">
-                    <School color="primary" />
-                    <Typography>
-                      <strong>Education:</strong> B.A. Mathematics
-                      <Typography variant="subtitle2"> Computer Science Minor </Typography>
-                      <Typography variant="subtitle2"> Providence College '16</Typography>
-                    </Typography>
-                  </Stack>
-                  
-                  <Stack direction="row" spacing={1} alignItems="center">
-                    <Code color="primary" />
-                    <Typography>
-                      <strong>Specialties:</strong> Full-Stack, AI, Data
-                    </Typography>
-                  </Stack>
-                </Stack>
-                
-                <Divider sx={{ my: 3 }} />
-                
-                <Stack direction="row" spacing={2} justifyContent="center">
-                  <IconButton 
-                    component={NextLink} 
-                    href="mailto:your.email@example.com"
-                    color="primary"
-                  >
-                    <Email fontSize="large" />
-                  </IconButton>
-                  <IconButton 
-                    component={NextLink} 
-                    href="https://linkedin.com/in/your-profile"
-                    target="_blank"
-                    color="primary"
-                  >
-                    <LinkedIn fontSize="large" />
-                  </IconButton>
-                  <IconButton 
-                    component={NextLink} 
-                    href="https://github.com/your-username"
-                    target="_blank"
-                    color="primary"
-                  >
-                    <GitHub fontSize="large" />
-                  </IconButton>
-                </Stack>
-              </CardContent>
-            </Card>
-          </Grid>
+            <Profile/>
   
           {/* Bio Section */}
           <Grid sx={{ display: 'flex' }}  size={{xs: 12, md: 8}} >
@@ -151,6 +71,7 @@ import Skills from "../components/aboutSections/Skills";
                     <strong> Raytheon</strong>, honing my expertise in high-performance software systems.
                   </Typography>
                 </Box>
+                <ExperienceSection/>
 
                <Typography variant="h6" gutterBottom>
                     Why Work With Me?
