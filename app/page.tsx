@@ -3,9 +3,9 @@
 
 import { Box, Typography, Button, Stack, useTheme, Chip } from '@mui/material';
 import NextLink from 'next/link';
-import { Email, LinkedIn, GitHub, Code } from '@mui/icons-material';
 import SocialButtons from './components/SocialButtons';
 import Grid from "@mui/material/Grid2"
+import TechStackViz from './components/TechStackViz';
 
 export default function Home() {
   const theme = useTheme();
@@ -105,10 +105,7 @@ export default function Home() {
             {/* 1. Animated code editor component */}
             {/* 2. 3D model/avatar */}
             {/* 3. Project showcase carousel */}
-            <Code sx={{ 
-              fontSize: 120,
-              color: theme.palette.text.disabled
-            }} />
+            <TechStackViz/>
           </Box>
         </Grid>
       </Grid>
