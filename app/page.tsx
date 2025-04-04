@@ -22,9 +22,9 @@ export default function Home() {
         ? 'radial-gradient(circle at center, #1a1a1a 0%, #121212 100%)' 
         : 'radial-gradient(circle at center, #f9f9f9 0%, #eaeaea 100%)'
     }}>
-      <Grid container spacing={6} alignItems="center">
+      <Grid container spacing={6} alignItems="stretch" height={'100%'}  minHeight={'60vh'}>
         {/* Left Column - Intro */}
-        <Grid size={{xs:12, md:6}}>
+        <Grid size={{xs:12, md:6}} alignSelf={"center"}>
           <Typography 
             variant="h2" 
             component="h1" 
@@ -34,7 +34,7 @@ export default function Home() {
               lineHeight: 1.2
             }}
           >
-            Hi, I'm <Box component="span" color="primary.main">Nicholas</Box>
+            Hi, I'm <Box component="span" color="primary.main">Nick!</Box>
           </Typography>
           
           <Typography 
@@ -101,16 +101,12 @@ export default function Home() {
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-            {/* Replace with your preferred visual - could be: */}
-            {/* 1. Animated code editor component */}
-            {/* 2. 3D model/avatar */}
-            {/* 3. Project showcase carousel */}
             <TechStackViz/>
           </Box>
         </Grid>
       </Grid>
       
-      {/* Skills Preview - Different from About page */}
+      {/* Skills Preview */}
       <Box sx={{ mt: 12 }}>
         <Typography variant="h4" component="h3" sx={{ mb: 4, textAlign: 'center' }}>
           What I Work With
