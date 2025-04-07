@@ -2,10 +2,9 @@
     {
         "id": "0",
         "title": "Warframe Market Research",
-        "description": "A tool to research the selling prices of warframe prime parts to inform you how you can best farm for platinum",
+        "description": "A market researhc tool for the videogame Warframe! The tool can be userdto research the selling prices prime parts and mod to inform you how you can best farm for platinum",
         "image": "/images/warframe-market-research.jpg",
         "technologies": ["Next.js", "TypeScript", "FastAPI", "MongoDB"],
-        "demoUrl": "tbd",
         "githubUrls": ["https://github.com/nicksteffen/warframemarketresearchbackend", "https://github.com/nicksteffen/warframeMarketResearchFrontend"],
         "year": 2025,
         "category": "Full-Stack"
@@ -16,23 +15,8 @@
       "description": "My personal portfolio built with Next.js and MUI",
       "image": "/images/portfolio-thumbnail.jpg",
       "technologies": ["Next.js", "TypeScript", "MUI", "React"],
-      "demoUrl": "https://myportfolio.com",
       "githubUrls": ["https://github.com/username/portfolio"],
       "year": 2023,
       "category": "Web Development"
-    },
-    {
-      "id": "2",
-      "title": "E-commerce App",
-      "description": "Full-stack e-commerce platform with payment integration",
-      "image": "/images/ecommerce-thumbnail.jpg",
-      "technologies": ["React", "Node.js", "MongoDB", "Stripe"],
-      "demoUrl": "https://ecommerce-demo.com",
-      "githubUrls": [
-        "https://github.com/username/ecommerce-frontend",
-        "https://github.com/username/ecommerce-backend"
-      ],
-      "year": 2024,
-      "category": "Full-Stack"
     }
   ]
