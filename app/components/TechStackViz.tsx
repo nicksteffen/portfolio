@@ -108,7 +108,12 @@ export default function TexhStackViz() {
                       '&:hover': {
                         transform: 'scale(1.1)', boxShadow: 3, bgcolor: color,
                         color: theme.palette.getContrastText(color), borderColor: color
-                      }
+                      },
+                      gridTemplateColumns: { 
+                        xs: 'repeat(3, 1fr)', // 3 columns on mobile
+                        sm: 'repeat(3, 1fr)', // 4 columns on small screens
+                        md: 'repeat(4, 1fr)', // 4 columns on small screens
+                      },
                     }}
                   >
                     <Box sx={{ 
