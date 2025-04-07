@@ -4,6 +4,7 @@ import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/mater
 import { useRouter } from "next/navigation";
 
 export default function TopNavBar() {
+    
     const router = useRouter();
     const pages = ['About', 'Projects', 'Contact'];
     return (

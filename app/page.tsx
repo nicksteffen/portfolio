@@ -55,9 +55,16 @@ export default function Home() {
               lineHeight: 1.7
             }}
           >
-            I build robust, efficient software solutions with modern technologies. 
-            With expertise across the stack, I bridge technical requirements with 
-            business needs to deliver impactful applications.
+            I’m a software engineer who thrives on solving complex problems—but over time, my focus has shifted 
+            from just solving puzzles to making sure the problems I’m working on truly matter. 
+            With 7+ years of experience in backend and full-stack development, I’ve built reliable, 
+            scalable systems—but what drives me now is using those skills to create positive, real-world impact.
+
+            I’m especially motivated by work that supports social good, healthcare, 
+            and equity—spaces where thoughtful technology can make a difference in people’s lives. 
+            Whether it’s optimizing systems or building tools from the ground up, I bring curiosity,
+             care, and a deep commitment to understanding why we’re building something—not just how.
+
           </Typography>
           
           <Stack direction="row" spacing={2} sx={{ mb: 6 }}>
