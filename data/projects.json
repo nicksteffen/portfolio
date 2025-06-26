@@ -15,7 +15,7 @@
       "description": "My personal portfolio built with Next.js and MUI",
       "image": "/images/portfolio-thumbnail.png",
       "technologies": ["Next.js", "TypeScript", "MUI", "React"],
-      "githubUrls": ["https://github.com/username/portfolio"],
+      "githubUrls": ["https://github.com/nicksteffen/portfolio"],
       "year": 2023,
       "category": "Web Development"
     },
