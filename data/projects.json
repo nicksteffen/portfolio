@@ -18,5 +18,16 @@
       "githubUrls": ["https://github.com/username/portfolio"],
       "year": 2023,
       "category": "Web Development"
+    },
+    {
+      "id": "2",
+      "title": "CogniTrain",
+      "description": "A web application for cognitive training exercises.",
+      "image": "/images/cognitrain-thumbnail.png",
+      "technologies": ["Next.js", "TypeScript", "React", "Firebase", "shadcn/ui", "Genkit"],
+      "githubUrls": ["https://github.com/nicksteffen/cognitrain"],
+      "year": 2025,
+      "category": "Web Development",
+      "demoUrl": "cognitrain.xyz"
     }
   ]
