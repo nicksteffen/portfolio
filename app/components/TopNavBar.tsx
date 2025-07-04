@@ -58,14 +58,14 @@ export default function TopNavBar() {
                 mx: 1, // theme.spacing(1)
                 fontWeight: 'medium',
                 letterSpacing: '0.02857em',
-                textTransform: 'uppercase',
-                color: 'white',
-                bgcolor: 'rgba(255, 255, 255, 0.1)',
+ textTransform: 'uppercase',
+ color: 'background.paper', // Text color is white
+ bgcolor: 'primary.main', // Background color is primary
                 transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
                 '&:hover': {
-                    bgcolor: 'rgba(255, 255, 255, 0.2)',
-                },
-                }}
+ bgcolor: 'primary.dark', // Darker shade on hover
+ },
+ }}
             >
                 Home
             </Button>
@@ -82,14 +82,14 @@ export default function TopNavBar() {
                 mx: 1, // theme.spacing(1)
                 fontWeight: 'medium',
                 letterSpacing: '0.02857em',
-                textTransform: 'uppercase',
-                color: 'white',
-                bgcolor: 'rgba(255, 255, 255, 0.1)',
+ textTransform: 'uppercase',
+ color: 'background.paper', // Text color is white
+ bgcolor: 'primary.main', // Background color is primary
                 transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
                 '&:hover': {
-                    bgcolor: 'rgba(255, 255, 255, 0.2)',
-                },
-                }}
+ bgcolor: 'primary.dark', // Darker shade on hover
+ },
+ }}
             >
                 {page}
             </Button>

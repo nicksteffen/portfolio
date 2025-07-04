@@ -48,17 +48,18 @@ export default function Skills() {
             {/* Skills Grid */}
             <Grid container spacing={2} sx={{ mb: 4 }}>
                 {skillsData.map((category) => (
-                    <Grid size={{xs:12, sm:6, md:4, lg:3}}>
-                    <Typography variant="subtitle1" fontWeight="medium" gutterBottom>
-                        {category.name}
-                    </Typography>
-                    <Stack spacing={0.5}>
-                        {category.skills.map((skill) => (
-                            <Typography key={skill} variant="body2">
-                                • {skill}
-                            </Typography>
-                        ))}
-                    </Stack>
+                    <Grid key={category.name} size={{xs:12, sm:6, md:4, lg:3}}>
+                        <Typography variant="subtitle1" fontWeight="medium" gutterBottom>
+                            {category.name}
+                        </Typography>
+                        <Stack component="ul" spacing={0.5} sx={{ paddingLeft: 2, marginTop: 0 }}> {/* Add component="ul" and styles */}
+                            {category.skills.map((skill) => (
+                                <Typography component="li" key={skill} variant="body2" sx={{ listStyleType: 'disc' }}> {/* Add component="li" and styles */}
+                                    {/* • {skill}  Remove manual bullet point */}
+                                    {skill}
+                                </Typography>
+                            ))}
+                        </Stack>
                     </Grid>
                 ))}
 

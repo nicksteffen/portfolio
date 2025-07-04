@@ -19,19 +19,19 @@ const darkTheme = createTheme({
     h1: {
       fontSize: '2.5rem',
       fontWeight: 700,
-      color: '#333',
+      color: '#222', // Darker color for better contrast
     },
     h2: {
       fontSize: '2rem',
       fontWeight: 600,
-      color: '#333',
+      color: '#222', // Darker color for better contrast
     },
     body1: {
       fontSize: '1rem',
       lineHeight: 1.6,
-      color: '#555',
+      color: '#444', // Darker color for better contrast
     },
-    // Add more typography variants as needed
+    // Add more typography variants as needed, using darker colors for text
   },
   components: {
     // You can add component-specific overrides here
