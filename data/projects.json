@@ -30,4 +30,15 @@
       "category": "Web Development",
       "demoUrl": "https://cognitrain.xyz"
     }
+ ,
+ {
+ "id": "3",
+ "title": "Before30Bucket",
+ "description": "A tool for finding ideas and maintain a \"30 Before 30\" bucket list.",
+ "image": "/images/before30bucket-thumbnail.png",
+ "technologies": ["Next.js", "Postgres", "Supabase", "Vercel"],
+ "year": 2025,
+ "category": "Web Development",
+ "demoUrl": "https://before30bucket.vercel.app/"
+ }
   ]
