@@ -40,5 +40,16 @@
     "year": 2025,
     "category": "Web Development",
     "demoUrl": "https://before30bucket.vercel.app/"
+    },
+    {
+      "id": "4",
+      "title": "Cribbage Score Keeper",
+      "description": "A quick flask + vue3 project I built to keep track of Cribbage scores, and have a scoring reference",
+      "image" : "images/cribbage-thumbnail.png",
+      "technologies": ["Vue3", "Flask"],
+      "githubUrls": ["https://github.com/nicksteffen/cribbagescorefe", "https://github.com/nicksteffen/cribbagescorebe"],
+      "year": 2025,
+      "category": "Web Development",
+      "demoUrl": "https://cribbagescorefe.onrender.com/"
     }
   ]
