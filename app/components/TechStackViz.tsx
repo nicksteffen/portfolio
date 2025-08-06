@@ -12,6 +12,7 @@ import {
   Paper,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import React from "react";
 
 import { FaJava, FaNodeJs, FaVuejs } from "react-icons/fa";
 import {
@@ -31,7 +32,7 @@ type Category = "frontend" | "backend" | "devops" | "database" | "all";
 type TechItem = {
   name: string;
   category: Exclude<Category, "all">;
-  icon: JSX.Element;
+  icon: React.ReactNode;
 };
 
 const TECH: TechItem[] = [

@@ -1,7 +1,6 @@
 // app/projects/page.tsx
 "use client";
 
-import { Suspense } from "react";
 import Grid from "@mui/material/Grid2";
 import {
   Box,
@@ -22,10 +21,10 @@ const projects: Project[] = getAllProjects();
 export default function Projects() {
   const theme = useTheme();
 
-  // Optional: derive unique tags across projects to show quick filters later
-  const allTags = Array.from(
-    new Set(projects.flatMap((p) => p.tags || [])),
-  ).slice(0, 10);
+  // Build a quick tech cloud from the "technologies" arrays (if present)
+  const allTechs = Array.from(
+    new Set(projects.flatMap((p: any) => p.technologies ?? [])),
+  ).slice(0, 12);
 
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
@@ -43,12 +42,11 @@ export default function Projects() {
           sx={{ maxWidth: 800, mx: "auto", lineHeight: 1.8 }}
         >
           Selected work spanning backend services, integrations, data workflows,
-          and full‑stack apps. Many of these focus on reliability, developer
-          experience, and clear user feedback.
+          and full‑stack apps.
         </Typography>
 
-        {/* Optional tag preview row (static for now; can be wired to filtering) */}
-        {allTags.length > 0 && (
+        {/* Optional technologies preview row */}
+        {allTechs.length > 0 && (
           <Stack
             direction="row"
             spacing={1}
@@ -56,7 +54,7 @@ export default function Projects() {
             flexWrap="wrap"
             sx={{ mt: 2 }}
           >
-            {allTags.map((t) => (
+            {allTechs.map((t) => (
               <Chip key={t} label={t} size="small" variant="outlined" />
             ))}
           </Stack>
@@ -74,9 +72,7 @@ export default function Projects() {
       <Grid container spacing={{ xs: 2.5, md: 3 }} columns={12}>
         {projects.map((project) => (
           <Grid key={project.id} size={{ xs: 12, sm: 6, md: 4 }}>
-            <Suspense fallback={<ProjectCard.Skeleton />}>
-              <ProjectCard project={project} />
-            </Suspense>
+            <ProjectCard project={project} />
           </Grid>
         ))}
       </Grid>
