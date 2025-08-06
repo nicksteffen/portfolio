@@ -1,133 +1,193 @@
-import { Box, Typography } from "@mui/material";
-import theme from "../src/theme";
+// app/components/TechStackViz.tsx
+"use client";
 
-import { FaJava, FaNodeJs, FaVuejs, } from "react-icons/fa";
+import { useMemo, useState } from "react";
+import {
+  Box,
+  Typography,
+  Chip,
+  Stack,
+  useTheme,
+  alpha,
+  Paper,
+} from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
-import { 
-    SiNextdotjs,
-    SiTypescript,
-    SiPython, 
-    SiFastapi,
-    SiReact,
-    SiDocker,
-    SiPostgresql,
-    SiMongodb,
-    SiAnsible
-  } from 'react-icons/si';
+import { FaJava, FaNodeJs, FaVuejs } from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiPython,
+  SiFastapi,
+  SiReact,
+  SiDocker,
+  SiPostgresql,
+  SiMongodb,
+  SiAnsible,
+} from "react-icons/si";
 
+type Category = "frontend" | "backend" | "devops" | "database" | "all";
 
-export default function TexhStackViz() {
-    const techStack = [
-        { 
-          name: 'Python', 
-          category: 'backend',
-          icon: <SiPython /> // From react-icons
-        },
-        { 
-          name: 'Java', 
-          category: 'backend',
-          icon: <FaJava /> // From react-icons
-        },
-        { 
-          name: 'Node.js', 
-          category: 'backend',
-          icon: <FaNodeJs /> // From react-icons
-        },
-        { 
-          name: 'FastAPI', 
-          category: 'backend',
-          icon: <SiFastapi /> // MUI icon (generic API symbol)
-        },
-        { 
-          name: 'TypeScript', 
-          category: 'frontend',
-          icon: <SiTypescript/> // MUI icon (closest match)
-        },
-        { 
-          name: 'React', 
-          category: 'frontend',
-          icon: <SiReact /> // From react-icons
-        },
-        { 
-          name: 'Vue.js', 
-          category: 'frontend',
-          icon: <FaVuejs /> // From react-icons
-        },
-        { 
-          name: 'Next.js', 
-          category: 'frontend',
-          icon: <SiNextdotjs /> // No direct icon - using generic code icon
-        },
-        { 
-          name: 'Docker', 
-          category: 'devops',
-          icon: <SiDocker /> // From react-icons
-        },
-        { 
-          name: 'Ansible', 
-          category: 'devops',
-          icon: <SiAnsible /> // No direct icon
-        },
-        { 
-          name: 'PostgreSQL', 
-          category: 'database',
-          icon: <SiPostgresql /> // From react-icons
-        },
-        { 
-          name: "MongoDB", 
-          category: 'database',
-          icon: <SiMongodb /> // From react-icons
-        },
-      ];
-    
-    return (
-        <Box sx={{ position: 'relative', height: { xs: '300px', md: '400px' },
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-            <Box sx={{ width: '100%', height: '100%',
-            display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 2, perspective: '1000px'
-            }}>
-            {/* Tech Stack Items */}
-            {techStack.map((tech, index) => {
-                const rotation = (index % 3) * 10 - 10; // -10, 0, 10 degrees
-                const color = 
-                tech.category === 'frontend' ? theme.palette.primary.main :
-                tech.category === 'backend' ? theme.palette.secondary.main :
-                theme.palette.info.main;
-                
-                return (
-                    <Box key={tech.name}
-                    sx={{
-                      display: 'flex', flexDirection: 'column', alignItems: 'center',
-                      justifyContent: 'center', width: 100, height: 100,
-                      borderRadius: '50%',
-                      bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
-                      border: `1px solid ${theme.palette.divider}`,
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'scale(1.1)', boxShadow: 3, bgcolor: color,
-                        color: theme.palette.getContrastText(color), borderColor: color
-                      },
-                      gridTemplateColumns: { 
-                        xs: 'repeat(3, 1fr)', // 3 columns on mobile
-                        sm: 'repeat(3, 1fr)', // 4 columns on small screens
-                        md: 'repeat(4, 1fr)', // 4 columns on small screens
-                      },
-                    }}
-                  >
-                    <Box sx={{ 
-                        fontSize: '2.5rem', mb: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            {tech.icon }
-                    </Box>
-                    <Typography variant="subtitle2" fontWeight="medium" sx={{ textAlign: 'center', p: 2 }} >
-                        {tech.name}
-                    </Typography>
+type TechItem = {
+  name: string;
+  category: Exclude<Category, "all">;
+  icon: JSX.Element;
+};
+
+const TECH: TechItem[] = [
+  { name: "Python", category: "backend", icon: <SiPython /> },
+  { name: "Java", category: "backend", icon: <FaJava /> },
+  { name: "Node.js", category: "backend", icon: <FaNodeJs /> },
+  { name: "FastAPI", category: "backend", icon: <SiFastapi /> },
+  { name: "TypeScript", category: "frontend", icon: <SiTypescript /> },
+  { name: "React", category: "frontend", icon: <SiReact /> },
+  { name: "Vue.js", category: "frontend", icon: <FaVuejs /> },
+  { name: "Next.js", category: "frontend", icon: <SiNextdotjs /> },
+  { name: "Docker", category: "devops", icon: <SiDocker /> },
+  { name: "Ansible", category: "devops", icon: <SiAnsible /> },
+  { name: "PostgreSQL", category: "database", icon: <SiPostgresql /> },
+  { name: "MongoDB", category: "database", icon: <SiMongodb /> },
+];
+
+export default function TechStackViz() {
+  const theme = useTheme();
+  const [filter, setFilter] = useState<Category>("all");
+
+  const filtered = useMemo(() => {
+    if (filter === "all") return TECH;
+    return TECH.filter((t) => t.category === filter);
+  }, [filter]);
+
+  const categoryColor = (category: TechItem["category"]) => {
+    switch (category) {
+      case "frontend":
+        return theme.palette.primary.main;
+      case "backend":
+        return theme.palette.secondary.main;
+      case "devops":
+        return theme.palette.info.main;
+      case "database":
+        return theme.palette.success.main;
+      default:
+        return theme.palette.divider;
+    }
+  };
+
+  return (
+    <Box sx={{ width: "100%" }}>
+      {/* Optional header and filters */}
+      <Stack spacing={2} sx={{ mb: 2, alignItems: "center" }}>
+        <Typography variant="h6" component="h3">
+          Tech I Work With
+        </Typography>
+        <Stack
+          direction="row"
+          spacing={1}
+          flexWrap="wrap"
+          justifyContent="center"
+        >
+          {(
+            ["all", "frontend", "backend", "devops", "database"] as Category[]
+          ).map((c) => (
+            <Chip
+              key={c}
+              label={c === "all" ? "All" : c[0].toUpperCase() + c.slice(1)}
+              clickable
+              aria-pressed={filter === c}
+              onClick={() => setFilter(c)}
+              color={filter === c ? "primary" : "default"}
+              variant={filter === c ? "filled" : "outlined"}
+              sx={{ textTransform: "capitalize" }}
+            />
+          ))}
+        </Stack>
+      </Stack>
+
+      {/* Responsive, non-overlapping grid using Grid2 */}
+      <Grid
+        container
+        spacing={2}
+        columns={12}
+        justifyContent="center"
+        alignItems="stretch"
+      >
+        {filtered.map((tech) => {
+          const col = categoryColor(tech.category);
+          return (
+            <Grid
+              key={tech.name}
+              size={{ xs: 6, sm: 4, md: 3, lg: 2 }}
+              sx={{ display: "flex" }} // lets the Paper stretch if you add height: '100%'
+            >
+              <Paper
+                elevation={0}
+                role="group"
+                aria-label={`${tech.name} ${tech.category}`}
+                sx={{
+                  p: 2,
+                  borderRadius: 3,
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  gap: 1,
+                  bgcolor:
+                    theme.palette.mode === "dark"
+                      ? alpha("#ffffff", 0.03)
+                      : alpha("#000000", 0.03),
+                  border: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
+                  transition:
+                    "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
+                  position: "relative",
+                  overflow: "hidden",
+                  "&:hover": {
+                    transform: "translateY(-2px)",
+                    boxShadow:
+                      theme.palette.mode === "dark"
+                        ? "0 12px 32px rgba(0,0,0,0.5)"
+                        : "0 12px 24px rgba(0,0,0,0.12)",
+                    borderColor: col,
+                  },
+                }}
+              >
+                {/* Small accent bar that does not affect layout height */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: 3,
+                    background: alpha(col, 0.9),
+                  }}
+                />
+
+                <Box
+                  sx={{
+                    fontSize: "2rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: theme.palette.text.primary,
+                    "& > svg": { width: 32, height: 32 },
+                  }}
+                >
+                  {tech.icon}
                 </Box>
-                );
-            })}
-            </Box>
-        </Box>
 
-    )
+                <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                  {tech.name}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  {tech.category}
+                </Typography>
+              </Paper>
+            </Grid>
+          );
+        })}
+      </Grid>
+    </Box>
+  );
 }
