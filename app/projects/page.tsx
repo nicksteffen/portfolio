@@ -55,7 +55,17 @@ export default function Projects() {
             sx={{ mt: 2 }}
           >
             {allTechs.map((t) => (
-              <Chip key={t} label={t} size="small" variant="outlined" />
+              <Chip
+                key={t}
+                label={t}
+                size="small"
+                variant="outlined"
+                // Using the theme's primary color for consistency
+                sx={{
+                  borderColor: theme.palette.primary.main,
+                  color: theme.palette.text.secondary,
+                }}
+              />
             ))}
           </Stack>
         )}
@@ -64,7 +74,9 @@ export default function Projects() {
       <Divider
         sx={{
           mb: { xs: 4, md: 6 },
-          borderColor: alpha(theme.palette.divider, 0.6),
+          // Using the accent color for the divider
+          borderColor: theme.palette.primary.main,
+          opacity: 0.6,
         }}
       />
 

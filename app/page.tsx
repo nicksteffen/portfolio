@@ -27,10 +27,11 @@ export default function Home() {
         justifyContent: "center",
         px: { xs: 2, md: 6 },
         py: { xs: 6, md: 10 },
+
         background:
           theme.palette.mode === "dark"
-            ? "radial-gradient(circle at center, #1a1a1a 0%, #0f0f0f 100%)"
-            : "radial-gradient(circle at center, #fafafa 0%, #eeeeee 100%)",
+            ? `linear-gradient(135deg, ${theme.palette.background.default} 0%, #121212 100%)`
+            : `linear-gradient(135deg, ${theme.palette.background.paper} 0%, #f5f5f5 100%)`,
       }}
     >
       <Grid

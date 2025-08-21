@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import CssBaseline from "@mui/material/CssBaseline";
 
 //import { Roboto } from 'next/font/google';
-import { ThemeProvider } from '@mui/material/styles';
-import darkTheme from './src/theme';
-import TopNavBar from "./components/TopNavBar";
+import { ThemeProvider } from "@mui/material/styles";
+import { darkTheme, oldPortfolioTheme } from "./src/theme";
+// import TopNavBar from "./components/TopNavBar";
+// import { useMediaQuery } from "@mui/material";
+// import MobileNavBar from "./components/MobileNavBar";
+import NavBar from "./components/NavBar";
 // import SideNav from "./sidenav";
 
 //const roboto = Roboto({
@@ -37,15 +40,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const isMobile = useMediaQuery("(max-width:600px)");
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <AppRouterCacheProvider>
-          <ThemeProvider theme={darkTheme}>
-            <div className="w-full flex-none md:w-64">
-                <TopNavBar/>
-              {/* <SideNav /> */}
-            </div>
+          <ThemeProvider theme={oldPortfolioTheme}>
+            <CssBaseline />
+            <NavBar />
             {children}
           </ThemeProvider>
         </AppRouterCacheProvider>

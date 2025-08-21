@@ -24,7 +24,14 @@ export default function About() {
   const theme = useTheme();
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
+    <Container
+      maxWidth="lg"
+      sx={{
+        py: { xs: 5, md: 8 },
+        // Set the background color to the main background from the theme
+        backgroundColor: theme.palette.background.default,
+      }}
+    >
       <Grid container spacing={{ xs: 3, md: 4 }} alignItems="stretch">
         <Profile />
 
@@ -33,11 +40,10 @@ export default function About() {
             sx={{
               height: "100%",
               borderRadius: 2,
-              border: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
-              bgcolor:
-                theme.palette.mode === "dark"
-                  ? alpha("#ffffff", 0.02)
-                  : alpha("#000000", 0.02),
+              // Use the accent color for the border
+              border: `1px solid ${theme.palette.primary.main}`,
+              // Set the background to the "paper" color from the theme
+              bgcolor: theme.palette.background.paper,
             }}
           >
             <CardContent sx={{ p: { xs: 2.5, md: 4 } }}>
@@ -97,11 +103,13 @@ export default function About() {
 
               <Box
                 sx={{
-                  backgroundColor: theme.palette.action.hover,
+                  // Use the secondary color for the "Recent Experience" box background
+                  backgroundColor: theme.palette.secondary.main,
                   p: 2.5,
                   borderRadius: 2,
                   mb: 4,
-                  border: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
+                  // Use the accent color for the border
+                  border: `1px solid ${theme.palette.primary.main}`,
                 }}
               >
                 <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
