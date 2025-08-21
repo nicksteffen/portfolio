@@ -84,12 +84,6 @@ export const oldPortfolioTheme = createTheme({
       secondary: oldPortfolioPalette.textSecondary, // Off-white for body text
     },
     // Adding custom colors to the palette for easier access
-    oldAboutBg: {
-      main: oldPortfolioPalette.aboutBg,
-    },
-    oldSkillsBg: {
-      main: oldPortfolioPalette.skillsBg,
-    },
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
