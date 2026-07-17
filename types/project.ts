@@ -7,4 +7,5 @@ export type Project = {
     demoUrl?: string; // URL to live project
     githubUrls: string[]; // Array of GitHub repo URLs
     category: string;
+    year: number;
   };

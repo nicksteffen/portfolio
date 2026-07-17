@@ -1,129 +1,159 @@
-[
-  {
-    "id": "0",
-    "title": "Warframe Market Research",
-    "description": "A market researhc tool for the videogame Warframe! The tool can be user to research the selling prices prime parts and mod to inform you how you can best farm for platinum",
-    "image": "/images/warframe-market-research.jpg",
-    "technologies": [
-      "Next.js",
-      "TypeScript",
-      "FastAPI",
-      "MongoDB"
-    ],
-    "githubUrls": [
-      "https://github.com/nicksteffen/warframemarketresearchbackend",
-      "https://github.com/nicksteffen/warframeMarketResearchFrontend"
-    ],
-    "year": 2025,
-    "category": "Full-Stack"
-  },
-  {
-    "id": "1",
-    "title": "Portfolio Website",
-    "description": "My personal portfolio built with Next.js and MUI",
-    "image": "/images/portfolio-thumbnail.png",
-    "technologies": [
-      "Next.js",
-      "TypeScript",
-      "MUI",
-      "React"
-    ],
-    "githubUrls": [
-      "https://github.com/nicksteffen/portfolio"
-    ],
-    "year": 2023,
-    "category": "Web Development"
-  },
-  {
-    "id": "2",
-    "title": "CogniTrain",
-    "description": "A web application for cognitive training exercises.",
-    "image": "/images/cognitrain-thumbnail.png",
-    "technologies": [
-      "Next.js",
-      "TypeScript",
-      "React",
-      "Firebase",
-      "shadcn/ui",
-      "Genkit"
-    ],
-    "githubUrls": [
-      "https://github.com/nicksteffen/cognitrain"
-    ],
-    "year": 2025,
-    "category": "Web Development",
-    "demoUrl": "https://cognitrain.xyz"
-  },
-  {
-    "id": "3",
-    "title": "Before30Bucket",
-    "description": "A tool for finding ideas and maintain a \"30 Before 30\" bucket list.",
-    "image": "/images/before30bucket-thumbnail.png",
-    "technologies": [
-      "Next.js",
-      "Postgres",
-      "Supabase",
-      "Vercel"
-    ],
-    "githubUrls": [
-      "https://github.com/nicksteffen/studio"
-    ],
-    "year": 2025,
-    "category": "Web Development",
-    "demoUrl": "https://before30bucket.vercel.app/"
-  },
-  {
-    "id": "4",
-    "title": "Cribbage Score Keeper",
-    "description": "A quick flask + vue3 project I built to keep track of Cribbage scores, and have a scoring reference",
-    "image": "images/cribbage-thumbnail.png",
-    "technologies": [
-      "Vue3",
-      "Flask"
-    ],
-    "githubUrls": [
-      "https://github.com/nicksteffen/cribbagescorefe",
-      "https://github.com/nicksteffen/cribbagescorebe"
-    ],
-    "year": 2025,
-    "category": "Web Development",
-    "demoUrl": "https://cribbagescorefe.onrender.com/"
-  },
-  {
-    "id": "5",
-    "title": "TicTacTocket",
-    "description": "A real-time multiplayer implementation of Ultimate Tic-Tac-Toe featuring online play via WebSockets and a challenging AI opponent.",
-    "image": "/images/tictactocket-thumbnail.png",
-    "technologies": [
-      "Nuxt 3",
-      "TypeScript",
-      "Tailwind CSS",
-      "Pinia",
-      "WebSockets"
-    ],
-    "githubUrls": [
-      "https://github.com/nicksteffen/tictactocket"
-    ],
-    "year": 2025,
-    "category": "Web Development",
-    "demoUrl": "https://tictactocket.onrender.com"
-  },
-  {
-    "id": "6",
-    "title": "BookBuddies",
-    "description": "A cross-platform mobile application for book enthusiasts to track reading, manage libraries, and connect via book clubs.",
-    "image": "/images/bookbuddies-thumbnail.png",
-    "technologies": [
-      "Expo",
-      "React Native",
-      "TypeScript",
-      "Supabase",
-      "NativeWind"
-    ],
-    "githubUrls": [
-      "https://github.com/nicksteffen/bookbuddies"
-    ],
-    "year": 2025,
-    "category": "Mobile Development"
-  }
-]
+{
+  "order": [
+    "3",
+    "6",
+    "2",
+    "5",
+    "0",
+    "4"
+  ],
+  "projects": [
+    {
+      "id": "0",
+      "title": "Warframe Market Research",
+      "description": "A market research tool for the videogame Warframe! The tool can be used to research the selling prices prime parts and mod to inform you how you can best farm for platinum.",
+      "image": "/images/warframe-market-research.jpg",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "FastAPI",
+        "MongoDB"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/warframemarketresearchbackend",
+        "https://github.com/nicksteffen/warframeMarketResearchFrontend"
+      ],
+      "year": 2025,
+      "category": "Full-Stack"
+    },
+    {
+      "id": "1",
+      "title": "Portfolio Website",
+      "description": "My personal portfolio built with Next.js and MUI",
+      "image": "/images/portfolio-thumbnail.png",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "MUI",
+        "React"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/portfolio"
+      ],
+      "year": 2023,
+      "category": "Web Development"
+    },
+    {
+      "id": "2",
+      "title": "CogniTrain",
+      "description": "A web application for cognitive training exercises.",
+      "image": "/images/cognitrain-thumbnail.png",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "React",
+        "Firebase",
+        "shadcn/ui",
+        "Genkit"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/cognitrain"
+      ],
+      "year": 2025,
+      "category": "Web Development",
+      "demoUrl": "https://cognitrain.xyz"
+    },
+    {
+      "id": "3",
+      "title": "Before30Bucket",
+      "description": "A tool for finding ideas and maintain a \"30 Before 30\" bucket list.",
+      "image": "/images/before30bucket-thumbnail.png",
+      "technologies": [
+        "Next.js",
+        "Postgres",
+        "Supabase",
+        "Vercel"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/studio"
+      ],
+      "year": 2025,
+      "category": "Web Development",
+      "demoUrl": "https://before30bucket.vercel.app/"
+    },
+    {
+      "id": "4",
+      "title": "Cribbage Score Keeper",
+      "description": "A quick flask + vue3 project I built to keep track of Cribbage scores, and have a scoring reference",
+      "image": "images/cribbage-thumbnail.png",
+      "technologies": [
+        "Vue3",
+        "Flask"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/cribbagescorefe",
+        "https://github.com/nicksteffen/cribbagescorebe"
+      ],
+      "year": 2025,
+      "category": "Web Development",
+      "demoUrl": "https://cribbagescorefe.onrender.com/"
+    },
+    {
+      "id": "5",
+      "title": "TicTacTocket",
+      "description": "A real-time multiplayer implementation of Ultimate Tic-Tac-Toe featuring online play via WebSockets and a challenging AI opponent.",
+      "image": "/images/tictactocket-thumbnail.png",
+      "technologies": [
+        "Nuxt 3",
+        "TypeScript",
+        "Tailwind CSS",
+        "Pinia",
+        "WebSockets"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/tictactocket"
+      ],
+      "year": 2025,
+      "category": "Web Development",
+      "demoUrl": "https://tictactocket.onrender.com"
+    },
+    {
+      "id": "6",
+      "title": "BookBuddies",
+      "description": "A cross-platform mobile application for book enthusiasts to track reading, manage libraries, and connect via book clubs.",
+      "image": "/images/bookbuddies-thumbnail.png",
+      "technologies": [
+        "Expo",
+        "React Native",
+        "TypeScript",
+        "Supabase",
+        "NativeWind"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/bookbuddies"
+      ],
+      "year": 2025,
+      "category": "Mobile Development"
+    },
+    {
+      "id": "7",
+      "title": "ClimbLog",
+      "description": "A local-first mobile application for rock climbers to track routes, log send attempts, and sketch route beta overlay paths directly onto photos.",
+      "image": "/images/climblog-thumbnail.png",
+      "technologies": [
+        "Expo",
+        "React Native",
+        "TypeScript",
+        "SQLite",
+        "Drizzle ORM",
+        "Clerk",
+        "Supabase"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/climblog"
+      ],
+      "year": 2026,
+      "category": "Mobile Development"
+    }
+  ]
+}

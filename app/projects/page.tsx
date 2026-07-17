@@ -1,7 +1,6 @@
 // app/projects/page.tsx
 "use client";
 
-import Grid from "@mui/material/Grid2";
 import {
   Box,
   Container,
@@ -10,7 +9,6 @@ import {
   Stack,
   Divider,
   useTheme,
-  alpha,
 } from "@mui/material";
 import ProjectCard from "../components/ProjectCard";
 import { getAllProjects } from "@/lib/projects";
@@ -73,24 +71,22 @@ export default function Projects() {
 
       <Divider
         sx={{
-          mb: { xs: 4, md: 6 },
+          mb: { xs: 5, md: 7 },
           // Using the accent color for the divider
           borderColor: theme.palette.primary.main,
           opacity: 0.6,
         }}
       />
 
-      {/* Grid of projects using Grid2 */}
-      <Grid container spacing={{ xs: 2.5, md: 3 }} columns={12}>
-        {projects.map((project) => (
-          <Grid key={project.id} size={{ xs: 12, sm: 6, md: 4 }}>
-            <ProjectCard project={project} />
-          </Grid>
+      {/* Stack of projects */}
+      <Stack spacing={{ xs: 6, md: 8 }}>
+        {projects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
         ))}
-      </Grid>
+      </Stack>
 
       {/* Footer / CTA */}
-      <Box sx={{ textAlign: "center", mt: { xs: 6, md: 8 } }}>
+      <Box sx={{ textAlign: "center", mt: { xs: 8, md: 10 } }}>
         <Typography variant="body2" color="text.secondary">
           Want more details or a walkthrough? See the repository links in each
           card or reach out on LinkedIn.
