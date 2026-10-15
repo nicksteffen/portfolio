@@ -1,6 +1,4 @@
 // app/about/page.tsx
-"use client";
-
 import {
   Box,
   Card,
@@ -10,8 +8,6 @@ import {
   Typography,
   Stack,
   Button,
-  useTheme,
-  alpha,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import NextLink from "next/link";
@@ -19,19 +15,11 @@ import { Email, LinkedIn, GitHub } from "@mui/icons-material";
 import Skills from "../components/aboutSections/Skills";
 import ExperienceSection from "../components/aboutSections/ExperienceSection";
 import Profile from "../components/aboutSections/Profile";
+import { siteConfig } from "@/lib/site";
 
 export default function About() {
-  const theme = useTheme();
-
   return (
-    <Container
-      maxWidth="lg"
-      sx={{
-        py: { xs: 5, md: 8 },
-        // Set the background color to the main background from the theme
-        backgroundColor: theme.palette.background.default,
-      }}
-    >
+    <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
       <Grid container spacing={{ xs: 3, md: 4 }} alignItems="stretch">
         <Profile />
 
@@ -39,11 +27,11 @@ export default function About() {
           <Card
             sx={{
               height: "100%",
-              borderRadius: 2,
-              // Use the accent color for the border
-              border: `1px solid ${theme.palette.primary.main}`,
-              // Set the background to the "paper" color from the theme
-              bgcolor: theme.palette.background.paper,
+              borderRadius: 4,
+              border: "1px solid",
+              borderColor: "divider",
+              bgcolor: "background.paper",
+              "&:hover": { borderColor: "primary.main" },
             }}
           >
             <CardContent sx={{ p: { xs: 2.5, md: 4 } }}>
@@ -65,7 +53,7 @@ export default function About() {
               >
                 <Button
                   component={NextLink}
-                  href="mailto:youremail@example.com"
+                  href={`mailto:${siteConfig.email}`}
                   startIcon={<Email />}
                   variant="contained"
                 >
@@ -73,7 +61,9 @@ export default function About() {
                 </Button>
                 <Button
                   component={NextLink}
-                  href="https://www.linkedin.com/in/your-handle"
+                  href={siteConfig.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   startIcon={<LinkedIn />}
                   variant="outlined"
                 >
@@ -81,7 +71,9 @@ export default function About() {
                 </Button>
                 <Button
                   component={NextLink}
-                  href="https://github.com/your-handle"
+                  href={siteConfig.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   startIcon={<GitHub />}
                   variant="text"
                 >
@@ -93,34 +85,38 @@ export default function About() {
                 Professional Profile
               </Typography>
               <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.8 }}>
-                I am a software engineer with over 7 years of experience across
-                backend and full stack development. I work primarily with
-                Python, Java, and modern web frameworks like Next.js and Vue.js.
-                My motivation is to build resilient, maintainable systems that
-                make a tangible difference, especially in healthcare, non
-                profits, and social good.
+                I am a software engineer with 10+ years of experience across
+                backend and full stack development in SaaS environments. I work
+                primarily with Python, Java, and modern web frameworks like
+                Next.js, React, and Vue.js, with a focus on API integrations,
+                automated testing, and internal tooling. My motivation is to
+                build resilient, maintainable systems that make a tangible
+                difference, especially in healthcare, non profits, and social
+                good.
               </Typography>
 
               <Box
                 sx={{
-                  // Use the secondary color for the "Recent Experience" box background
-                  backgroundColor: theme.palette.secondary.main,
+                  backgroundColor: "secondary.main",
                   p: 2.5,
                   borderRadius: 2,
                   mb: 4,
-                  // Use the accent color for the border
-                  border: `1px solid ${theme.palette.primary.main}`,
+                  border: "1px solid",
+                  borderColor: "divider",
                 }}
               >
                 <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
                   Recent Experience
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  At ClearlyRated I built scalable web applications, data
-                  integrations, and internal tooling to improve reliability and
-                  developer velocity. Previously at Raytheon I contributed to
-                  high performance systems, strengthening my focus on
-                  correctness, testing, and operational rigor.
+                  As an independent consultant I architect serverless backends
+                  (Supabase, PostgreSQL) and lead launch operations for
+                  high-traffic products. At ClearlyRated I modernized backends,
+                  built agnostic API integration models for CRMs like
+                  Salesforce, and created Dockerized developer tooling.
+                  Previously at Raytheon I contributed to high performance
+                  monitoring systems, strengthening my focus on correctness,
+                  testing, and operational rigor.
                 </Typography>
               </Box>
 

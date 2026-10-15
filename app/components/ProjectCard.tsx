@@ -9,28 +9,29 @@ import {
   Button,
   Chip,
   Stack,
-  useTheme,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import NextLink from "next/link";
 import { Project } from "@/types/project";
 import { GitHub, Launch } from "@mui/icons-material";
+import { useState } from "react";
 
 type ProjectCardProps = {
   project: Project;
   index: number;
 };
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const theme = useTheme();
-  const isEven = index % 2 === 0;
+function normalizeImage(image?: string): string {
+  if (!image) return "";
+  const clean = image.startsWith("/") ? image : `/${image}`;
+  return `/portfolio${clean}`;
+}
 
-  const cleanImagePath = project.image
-    ? project.image.startsWith("/")
-      ? project.image
-      : `/${project.image}`
-    : "";
-  const imageUrl = cleanImagePath ? `/portfolio${cleanImagePath}` : "";
+export default function ProjectCard({ project, index }: ProjectCardProps) {
+  const isEven = index % 2 === 0;
+  const imageUrl = normalizeImage(project.image);
+  const [imgOk, setImgOk] = useState(true);
+  const showImage = Boolean(imageUrl) && imgOk;
 
   return (
     <Card
@@ -40,20 +41,19 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         flexDirection: "column",
         borderRadius: 4,
         overflow: "hidden",
-        border: `1px solid ${theme.palette.divider}`,
-        transition: "all 0.3s ease-in-out",
-        background: "rgba(23, 31, 53, 0.4)",
-        backdropFilter: "blur(8px)",
+        border: "1px solid",
+        borderColor: "divider",
+        transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+        backgroundColor: "background.paper",
         "&:hover": {
           transform: "translateY(-4px)",
-          boxShadow: `0 12px 24px rgba(0, 0, 0, 0.3), 0 0 15px ${theme.palette.primary.main}4D`,
-          borderColor: theme.palette.primary.main,
+          boxShadow: "0 12px 24px rgba(0, 0, 0, 0.3)",
+          borderColor: "primary.main",
         },
       }}
       variant="outlined"
     >
       <Grid container columns={12}>
-        {/* Left or Right column for Image depending on index */}
         <Grid
           size={{ xs: 12, md: 6 }}
           order={{ xs: 1, md: isEven ? 1 : 2 }}
@@ -63,17 +63,22 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             minHeight: { xs: 240, sm: 300, md: "100%" },
             display: "flex",
             alignItems: "stretch",
+            background:
+              "linear-gradient(135deg, rgba(50,67,120,0.5), rgba(23,31,53,0.9))",
           }}
         >
-          {imageUrl && (
+          {showImage ? (
             <Box
               component="img"
               src={imageUrl}
               alt={project.title}
+              loading="lazy"
+              onError={() => setImgOk(false)}
               sx={{
                 width: "100%",
                 height: "100%",
                 minHeight: { xs: 240, sm: 300, md: 360 },
+                aspectRatio: "16/9",
                 objectFit: "cover",
                 transition: "transform 0.5s ease",
                 "&:hover": {
@@ -81,10 +86,27 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 },
               }}
             />
+          ) : (
+            <Box
+              role="img"
+              aria-label={`${project.title} preview placeholder`}
+              sx={{
+                width: "100%",
+                minHeight: { xs: 240, sm: 300, md: 360 },
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                p: 4,
+                textAlign: "center",
+              }}
+            >
+              <Typography variant="h6" color="text.secondary">
+                {project.title}
+              </Typography>
+            </Box>
           )}
         </Grid>
 
-        {/* Column for Details */}
         <Grid
           size={{ xs: 12, md: 6 }}
           order={{ xs: 2, md: isEven ? 2 : 1 }}
@@ -104,14 +126,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             }}
           >
             <Box>
-              {/* Year and Category Badge Row */}
               <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 1.5 }}>
                 <Chip
                   label={project.year}
                   size="small"
                   sx={{
                     bgcolor: "rgba(178, 141, 61, 0.15)",
-                    color: theme.palette.primary.main,
+                    color: "primary.main",
                     fontWeight: 700,
                     borderRadius: 1,
                   }}
@@ -129,7 +150,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 </Typography>
               </Stack>
 
-              {/* Title */}
               <Typography
                 gutterBottom
                 variant="h4"
@@ -144,7 +164,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.title}
               </Typography>
 
-              {/* Description */}
               <Typography
                 variant="body1"
                 sx={{
@@ -157,7 +176,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.description}
               </Typography>
 
-              {/* Tech Stack */}
               {project.technologies && (
                 <Box sx={{ mb: 4 }}>
                   <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap", gap: 1 }}>
@@ -166,14 +184,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                         key={tech}
                         label={tech}
                         size="small"
+                        variant="outlined"
                         sx={{
-                          bgcolor: "rgba(255, 255, 255, 0.05)",
                           color: "text.secondary",
-                          border: "1px solid rgba(255, 255, 255, 0.1)",
                           fontWeight: 500,
-                          "&:hover": {
-                            bgcolor: "rgba(255, 255, 255, 0.1)",
-                          },
                         }}
                       />
                     ))}
@@ -182,7 +196,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               )}
             </Box>
 
-            {/* Action Buttons */}
             <Stack direction="row" spacing={2} sx={{ flexWrap: "wrap", gap: 1.5 }}>
               {project.demoUrl && (
                 <Button
@@ -193,13 +206,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                   variant="contained"
                   size="medium"
                   endIcon={<Launch sx={{ fontSize: "1.1rem" }} />}
-                  sx={{
-                    fontWeight: 600,
-                    px: 3,
-                    py: 1,
-                    textTransform: "none",
-                    boxShadow: `0 4px 14px ${theme.palette.primary.main}33`,
-                  }}
+                  sx={{ fontWeight: 600, px: 3, py: 1 }}
                 >
                   Live Demo
                 </Button>
@@ -207,7 +214,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
               {project.githubUrls?.map((url, idx) => (
                 <Button
-                  key={idx}
+                  key={url}
                   component={NextLink}
                   href={url}
                   target="_blank"
@@ -215,18 +222,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                   variant="outlined"
                   size="medium"
                   startIcon={<GitHub sx={{ fontSize: "1.1rem" }} />}
-                  sx={{
-                    fontWeight: 600,
-                    px: 3,
-                    py: 1,
-                    textTransform: "none",
-                    borderColor: "rgba(255, 255, 255, 0.2)",
-                    color: "text.primary",
-                    "&:hover": {
-                      borderColor: theme.palette.primary.main,
-                      bgcolor: "rgba(178, 141, 61, 0.05)",
-                    },
-                  }}
+                  sx={{ fontWeight: 600, px: 3, py: 1 }}
                 >
                   {project.githubUrls.length > 1 ? `Repo ${idx + 1}` : "GitHub"}
                 </Button>

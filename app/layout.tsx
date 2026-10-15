@@ -4,21 +4,9 @@ import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
 
-//import { Roboto } from 'next/font/google';
 import { ThemeProvider } from "@mui/material/styles";
-import { darkTheme, oldPortfolioTheme } from "./src/theme";
-// import TopNavBar from "./components/TopNavBar";
-// import { useMediaQuery } from "@mui/material";
-// import MobileNavBar from "./components/MobileNavBar";
+import { portfolioTheme } from "@/lib/theme";
 import NavBar from "./components/NavBar";
-// import SideNav from "./sidenav";
-
-//const roboto = Roboto({
-//  weight: ['300', '400', '500', '700'],
-//  subsets: ['latin'],
-//  display: 'swap',
-//  variable: '--font-roboto',
-//});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,14 +28,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const isMobile = useMediaQuery("(max-width:600px)");
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AppRouterCacheProvider>
-          <ThemeProvider theme={oldPortfolioTheme}>
+          <ThemeProvider theme={portfolioTheme}>
             <CssBaseline />
             <NavBar />
             {children}

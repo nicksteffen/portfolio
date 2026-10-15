@@ -7,8 +7,6 @@ import {
   Typography,
   Chip,
   Stack,
-  useTheme,
-  alpha,
   Paper,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
@@ -26,32 +24,34 @@ import {
   SiMongodb,
   SiAnsible,
 } from "react-icons/si";
+import techStackData from "@/data/tech-stack.json";
 
 type Category = "frontend" | "backend" | "devops" | "database" | "all";
+
+const ICONS: Record<string, React.ReactNode> = {
+  SiPython: <SiPython />,
+  FaJava: <FaJava />,
+  FaNodeJs: <FaNodeJs />,
+  SiFastapi: <SiFastapi />,
+  SiTypescript: <SiTypescript />,
+  SiReact: <SiReact />,
+  FaVuejs: <FaVuejs />,
+  SiNextdotjs: <SiNextdotjs />,
+  SiDocker: <SiDocker />,
+  SiAnsible: <SiAnsible />,
+  SiPostgresql: <SiPostgresql />,
+  SiMongodb: <SiMongodb />,
+};
 
 type TechItem = {
   name: string;
   category: Exclude<Category, "all">;
-  icon: React.ReactNode;
+  icon: string;
 };
 
-const TECH: TechItem[] = [
-  { name: "Python", category: "backend", icon: <SiPython /> },
-  { name: "Java", category: "backend", icon: <FaJava /> },
-  { name: "Node.js", category: "backend", icon: <FaNodeJs /> },
-  { name: "FastAPI", category: "backend", icon: <SiFastapi /> },
-  { name: "TypeScript", category: "frontend", icon: <SiTypescript /> },
-  { name: "React", category: "frontend", icon: <SiReact /> },
-  { name: "Vue.js", category: "frontend", icon: <FaVuejs /> },
-  { name: "Next.js", category: "frontend", icon: <SiNextdotjs /> },
-  { name: "Docker", category: "devops", icon: <SiDocker /> },
-  { name: "Ansible", category: "devops", icon: <SiAnsible /> },
-  { name: "PostgreSQL", category: "database", icon: <SiPostgresql /> },
-  { name: "MongoDB", category: "database", icon: <SiMongodb /> },
-];
+const TECH = techStackData as TechItem[];
 
 export default function TechStackViz() {
-  const theme = useTheme();
   const [filter, setFilter] = useState<Category>("all");
 
   const filtered = useMemo(() => {
@@ -62,21 +62,20 @@ export default function TechStackViz() {
   const categoryColor = (category: TechItem["category"]) => {
     switch (category) {
       case "frontend":
-        return theme.palette.primary.main;
+        return "primary.main";
       case "backend":
-        return theme.palette.secondary.main;
+        return "secondary.main";
       case "devops":
-        return theme.palette.info.main;
+        return "info.main";
       case "database":
-        return theme.palette.success.main;
+        return "success.main";
       default:
-        return theme.palette.divider;
+        return "divider";
     }
   };
 
   return (
     <Box sx={{ width: "100%" }}>
-      {/* Optional header and filters */}
       <Stack spacing={2} sx={{ mb: 2, alignItems: "center" }}>
         <Typography variant="h6" component="h3">
           Tech I Work With
@@ -104,7 +103,6 @@ export default function TechStackViz() {
         </Stack>
       </Stack>
 
-      {/* Responsive, non-overlapping grid using Grid2 */}
       <Grid
         container
         spacing={2}
@@ -118,7 +116,7 @@ export default function TechStackViz() {
             <Grid
               key={tech.name}
               size={{ xs: 6, sm: 4, md: 3, lg: 2 }}
-              sx={{ display: "flex" }} // lets the Paper stretch if you add height: '100%'
+              sx={{ display: "flex" }}
             >
               <Paper
                 elevation={0}
@@ -134,26 +132,20 @@ export default function TechStackViz() {
                   justifyContent: "center",
                   textAlign: "center",
                   gap: 1,
-                  bgcolor:
-                    theme.palette.mode === "dark"
-                      ? alpha("#ffffff", 0.03)
-                      : alpha("#000000", 0.03),
-                  border: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
+                  bgcolor: "background.paper",
+                  border: "1px solid",
+                  borderColor: "divider",
                   transition:
                     "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
                   position: "relative",
                   overflow: "hidden",
                   "&:hover": {
                     transform: "translateY(-2px)",
-                    boxShadow:
-                      theme.palette.mode === "dark"
-                        ? "0 12px 32px rgba(0,0,0,0.5)"
-                        : "0 12px 24px rgba(0,0,0,0.12)",
+                    boxShadow: "0 12px 32px rgba(0,0,0,0.5)",
                     borderColor: col,
                   },
                 }}
               >
-                {/* Small accent bar that does not affect layout height */}
                 <Box
                   sx={{
                     position: "absolute",
@@ -161,7 +153,15 @@ export default function TechStackViz() {
                     left: 0,
                     width: "100%",
                     height: 3,
-                    background: alpha(col, 0.9),
+                    background: (theme) => {
+                      const palette = theme.palette as unknown as Record<
+                        string,
+                        { main: string }
+                      >;
+                      const key = (col as string).split(".")[0];
+                      return palette[key]?.main ?? col;
+                    },
+                    opacity: 0.9,
                   }}
                 />
 
@@ -171,11 +171,11 @@ export default function TechStackViz() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: theme.palette.text.primary,
+                    color: "text.primary",
                     "& > svg": { width: 32, height: 32 },
                   }}
                 >
-                  {tech.icon}
+                  {ICONS[tech.icon] ?? null}
                 </Box>
 
                 <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>

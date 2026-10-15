@@ -1,0 +1,14 @@
+[
+  { "name": "Python", "category": "backend", "icon": "SiPython" },
+  { "name": "Java", "category": "backend", "icon": "FaJava" },
+  { "name": "Node.js", "category": "backend", "icon": "FaNodeJs" },
+  { "name": "FastAPI", "category": "backend", "icon": "SiFastapi" },
+  { "name": "TypeScript", "category": "frontend", "icon": "SiTypescript" },
+  { "name": "React", "category": "frontend", "icon": "SiReact" },
+  { "name": "Vue.js", "category": "frontend", "icon": "FaVuejs" },
+  { "name": "Next.js", "category": "frontend", "icon": "SiNextdotjs" },
+  { "name": "Docker", "category": "devops", "icon": "SiDocker" },
+  { "name": "Ansible", "category": "devops", "icon": "SiAnsible" },
+  { "name": "PostgreSQL", "category": "database", "icon": "SiPostgresql" },
+  { "name": "MongoDB", "category": "database", "icon": "SiMongodb" }
+]

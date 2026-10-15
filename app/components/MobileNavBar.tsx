@@ -4,7 +4,6 @@ import { Menu as MenuIcon } from "@mui/icons-material";
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
   List,
   ListItem,
@@ -12,17 +11,14 @@ import {
   ListItemText,
   Toolbar,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { navPages } from "@/lib/site";
 
 export default function MobileNavBar() {
   const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
-
-  const pages = ["About", "Projects", "Contact"];
-  const portfolioBgColor = "#324378";
 
   return (
     <AppBar
@@ -52,45 +48,46 @@ export default function MobileNavBar() {
           </Typography>
         </Box>
 
-        <>
-          {/* Mobile menu button */}
-          <MenuIcon
-            onClick={() => setShowMenu(!showMenu)}
-            sx={{
-              "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.1)" },
-            }}
-          />
+        <IconButton
+          onClick={() => setShowMenu(!showMenu)}
+          aria-label={showMenu ? "Close menu" : "Open menu"}
+          aria-expanded={showMenu}
+          sx={{
+            "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.1)" },
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
 
-          {/* Mobile menu */}
-          <Box
-            component="nav"
-            sx={{
-              display: showMenu ? "block" : "none",
-              position: "absolute",
-              top: 64,
-              left: 0,
-              width: "100%",
-              background: portfolioBgColor, // Use the theme color for background
-              boxShadow: 2,
-              zIndex: 1000,
-            }}
-          >
-            <List>
-              {pages.map((page) => (
-                <ListItem key={page} disablePadding>
-                  <ListItemButton
-                    onClick={() => {
-                      router.push(`/${page.toLowerCase()}`);
-                      setShowMenu(false); // Close the menu after clicking
-                    }}
-                  >
-                    <ListItemText primary={page} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        </>
+        <Box
+          component="nav"
+          aria-label="Mobile"
+          sx={{
+            display: showMenu ? "block" : "none",
+            position: "absolute",
+            top: 64,
+            left: 0,
+            width: "100%",
+            backgroundColor: "background.paper",
+            boxShadow: 2,
+            zIndex: 1000,
+          }}
+        >
+          <List>
+            {navPages.map((page) => (
+              <ListItem key={page} disablePadding>
+                <ListItemButton
+                  onClick={() => {
+                    router.push(`/${page.toLowerCase()}`);
+                    setShowMenu(false);
+                  }}
+                >
+                  <ListItemText primary={page} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
       </Toolbar>
     </AppBar>
   );

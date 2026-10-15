@@ -3,26 +3,33 @@ import { Project } from '@/types/project';
 
 export function getAllProjects(): Project[] {
   const { order, projects } = projectsData as { order?: string[]; projects: Project[] };
-  
+
   if (!order || !Array.isArray(order)) {
     return projects;
   }
-  
+
   // Create a map for quick lookup
   const projectMap = new Map<string, Project>(
     projects.map((p) => [p.id, p])
   );
-  
+
   const orderedProjects: Project[] = [];
-  
+  const seen = new Set<string>();
+
   // Add projects in the order specified
   order.forEach((id) => {
     const project = projectMap.get(id);
     if (project) {
       orderedProjects.push(project);
+      seen.add(id);
     }
   });
-  
+
+  // Append any projects missing from `order` so none are silently hidden
+  projects.forEach((p) => {
+    if (!seen.has(p.id)) orderedProjects.push(p);
+  });
+
   return orderedProjects;
 }
 

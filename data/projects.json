@@ -5,7 +5,9 @@
     "2",
     "5",
     "0",
-    "4"
+    "4",
+    "1",
+    "7"
   ],
   "projects": [
     {
@@ -85,7 +87,7 @@
       "id": "4",
       "title": "Cribbage Score Keeper",
       "description": "A quick flask + vue3 project I built to keep track of Cribbage scores, and have a scoring reference",
-      "image": "images/cribbage-thumbnail.png",
+      "image": "/images/cribbage-thumbnail.png",
       "technologies": [
         "Vue3",
         "Flask"

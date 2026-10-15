@@ -1,0 +1,8 @@
+[
+  { "name": "Languages", "skills": ["Python", "Java", "C++", "TypeScript", "JavaScript"] },
+  { "name": "Frontend", "skills": ["React", "React Native", "Next.js", "Vue.js", "HTML5", "CSS3"] },
+  { "name": "Backend", "skills": ["Node.js", "FastAPI", "Flask", "Quart", "Express", "Django"] },
+  { "name": "Databases", "skills": ["MySQL", "PostgreSQL", "MongoDB", "SQLite", "Redis", "ElasticSearch", "RabbitMQ"] },
+  { "name": "DevOps", "skills": ["Docker", "Ansible", "Linux/Unix", "Bash", "AWS", "GCP", "Vercel", "Supabase", "CI/CD"] },
+  { "name": "Methodologies", "skills": ["Agile", "TDD", "System Design", "Distributed Systems", "REST", "OAuth/JWT", "SaaS"] }
+]

@@ -1,70 +1,45 @@
-import { Divider, Stack, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid2"; // Add this line to import Grid
+import { Stack, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import skillsData from "@/data/skills.json";
+import type { SkillCategory } from "@/types/content";
 
-type SkillType = {
-    name: string;
-    skills: string[];
-}
+const skills = skillsData as SkillCategory[];
 
 export default function Skills() {
-    // todo pull this out of the code at some point
-    const skillsData: SkillType[] = [
-        {
-            name: "Languages",
-            skills: ["Java", "TypeScript", "JavaScript", "Python", "C++"]
-        },
-        {
-            name: "Frontend",
-            skills: ["React", "Vue.js", "HTML5", "CSS3"]
-        },
-        {
-            name: "Backend", 
-            skills: ["Node.js", "Express", "Flask", "Django", "Quart"]
-        },
-        {
-            name: "Databases",
-            skills: ["MySQL", "PostgreSQL", "MongoDB", "Redis"]
-        },
-        {
-            name: "DevOps",
-            skills: ["Docker", "Ansible", "CI/CD", "ElasticSearch"]
-        },
-        {
-            name: "Methodologies",
-            skills: ["Agile", "TDD", "System Design"]
-        }
-    ];
-
-
-
-    return (
-        <>
-            <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
-                Technical Expertise
+  return (
+    <>
+      <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
+        Technical Expertise
+      </Typography>
+      <Typography variant="body1" paragraph sx={{ mb: 3 }}>
+        I bring hands-on experience with modern development stacks and
+        methodologies:
+      </Typography>
+      <Grid container spacing={2} sx={{ mb: 4 }}>
+        {skills.map((category) => (
+          <Grid key={category.name} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+            <Typography variant="subtitle1" fontWeight="medium" gutterBottom>
+              {category.name}
             </Typography>
-            <Typography variant="body1" paragraph sx={{ mb: 3 }}>
-                I bring hands-on experience with modern development stacks and methodologies:
-            </Typography>
-            {/* Skills Grid */}
-            <Grid container spacing={2} sx={{ mb: 4 }}>
-                {skillsData.map((category) => (
-                    <Grid key={category.name} size={{xs:12, sm:6, md:4, lg:3}}>
-                        <Typography variant="subtitle1" fontWeight="medium" gutterBottom>
-                            {category.name}
-                        </Typography>
-                        <Stack component="ul" spacing={0.5} sx={{ paddingLeft: 2, marginTop: 0 }}> {/* Add component="ul" and styles */}
-                            {category.skills.map((skill) => (
-                                <Typography component="li" key={skill} variant="body2" sx={{ listStyleType: 'disc' }}> {/* Add component="li" and styles */}
-                                    {/* • {skill}  Remove manual bullet point */}
-                                    {skill}
-                                </Typography>
-                            ))}
-                        </Stack>
-                    </Grid>
-                ))}
-
-            </Grid>
-
-        </>
-    )
+            <Stack
+              component="ul"
+              spacing={0.5}
+              sx={{ paddingLeft: 2, marginTop: 0 }}
+            >
+              {category.skills.map((skill) => (
+                <Typography
+                  component="li"
+                  key={skill}
+                  variant="body2"
+                  sx={{ listStyleType: "disc" }}
+                >
+                  {skill}
+                </Typography>
+              ))}
+            </Stack>
+          </Grid>
+        ))}
+      </Grid>
+    </>
+  );
 }

@@ -1,0 +1,60 @@
+[
+  {
+    "role": "Lead Full-Stack Consultant",
+    "company": "Independent Consultant",
+    "period": "December 2025 – Present",
+    "location": "Remote",
+    "highlights": [
+      "Architected a scalable serverless backend with Supabase Edge Functions and PostgreSQL, migrating from a FastAPI prototype for performance and cost",
+      "Designed a custom CI/CD pipeline on Vercel with multi-branch environments to safely vet AI-assisted code contributions",
+      "Built a high-performance Vite web app with feature parity and seamless data sync with the native iOS platform",
+      "Engineered secure Supabase Authentication and cross-platform Stripe payment integration",
+      "Directed launch operations with health monitoring and Vercel Analytics for high-traffic events"
+    ]
+  },
+  {
+    "role": "Software Engineer",
+    "company": "ClearlyRated",
+    "period": "June 2021 – November 2024",
+    "location": "Remote",
+    "highlights": [
+      "Led backend modernization from Flask to Quart for async capabilities, resolving a long-standing logging issue and configuring Hypercorn for deployment",
+      "Architected a reusable, agnostic Java object model for third-party API integrations, accelerating onboarding of CRM platforms like Salesforce and Microsoft Dynamics",
+      "Built Dockerized MySQL developer environments with Python scripting for reproducible, production-like data",
+      "Improved unit-test efficiency with a JUnit mock-based refactor plan to unblock CI/CD pipelines",
+      "Engineered a full-stack Vue.js + Java + MySQL CSV ingestion flow for customer contact data"
+    ]
+  },
+  {
+    "role": "Software Engineer II",
+    "company": "Raytheon",
+    "period": "August 2018 – May 2021",
+    "location": "Portsmouth, RI",
+    "highlights": [
+      "Built a Python + SNMP device network monitoring suite integrated with legacy Java services via Redis, with automatic shutdown signals to protect hardware",
+      "Implemented Splunk with dual-instance failover architecture for 99% uptime log monitoring on mission-critical hardware",
+      "Authored Ansible playbooks and Kickstart files for automated deployment across hardware and Splunk servers"
+    ]
+  },
+  {
+    "role": "Software Consultant",
+    "company": "Computer Associates Inc",
+    "period": "June 2016 – July 2018",
+    "location": "Smithfield, RI",
+    "highlights": [
+      "Customized core ERP software for diverse clients, including a hardwood door configurator for quotes and online sales",
+      "Gathered requirements directly with clients and advised on solutions to expand business reach"
+    ]
+  },
+  {
+    "role": "Software Engineer Intern",
+    "company": "Farsounder",
+    "period": "May 2015 – May 2016",
+    "location": "Warwick, RI",
+    "highlights": [
+      "Improved C++ map overlays for GPS tracking with real-time distance and angle calculations",
+      "Added tag support and hash-based dataset lookup to an internal data playback tool",
+      "Researched forward-looking sonar for depth approximation and real-time ocean floor mapping"
+    ]
+  }
+]

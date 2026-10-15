@@ -1,21 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Global styles — theme tokens own colors/typography via MUI.
+   No Tailwind utilities are used; keep this file minimal. */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
 }

@@ -1,102 +1,125 @@
-'use client'
+"use client";
 import { AccountCircle } from "@mui/icons-material";
-import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
-import { useRouter } from "next/navigation";
+import {
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { usePathname, useRouter } from "next/navigation";
+import { navPages } from "@/lib/site";
+
+function NavButton({
+  label,
+  href,
+  active,
+  onNavigate,
+}: {
+  label: string;
+  href: string;
+  active: boolean;
+  onNavigate: (href: string) => void;
+}) {
+  return (
+    <Button
+      onClick={() => onNavigate(href)}
+      aria-current={active ? "page" : undefined}
+      size="large"
+      sx={{
+        mx: 0.5,
+        fontWeight: active ? 700 : 500,
+        letterSpacing: "0.02857em",
+        textTransform: "uppercase",
+        color: active ? "primary.main" : "text.secondary",
+        borderBottom: "2px solid",
+        borderColor: active ? "primary.main" : "transparent",
+        borderRadius: 0,
+        pb: 0.5,
+        "&:hover": {
+          color: "primary.main",
+          backgroundColor: "transparent",
+          borderColor: "primary.main",
+        },
+      }}
+    >
+      {label}
+    </Button>
+  );
+}
 
 export default function TopNavBar() {
-    
-    const router = useRouter();
-    const pages = ['About', 'Projects', 'Contact'];
-    return (
-        <AppBar position="static"
+  const router = useRouter();
+  const pathname = usePathname();
+  const navigate = (href: string) => router.push(href);
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname?.startsWith(href) ?? false;
+
+  return (
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: "background.paper",
+        color: "text.primary",
+        boxShadow: "none",
+        borderBottom: "1px solid",
+        borderColor: "divider",
+      }}
+    >
+      <Toolbar
         sx={{
-            backgroundColor: 'background.paper',
-            // boxShadow: 3, // MUI shadow number (0-24)
-            color: 'text.primary',
-            boxShadow: 'none',
-            borderBottom: '1px solid',
-            borderColor: 'divider',
+          px: 3,
+          minHeight: 64,
+          justifyContent: "space-between",
         }}
-        >
-        <Toolbar
+      >
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <IconButton
+            onClick={() => navigate("/")}
+            aria-label="Go to homepage"
             sx={{
-            px: 3, // theme.spacing(3)
-            minHeight: 64,
-            justifyContent: 'space-between', // separate left and right sides
+              "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.1)" },
             }}
+          >
+            <AccountCircle fontSize="large" sx={{ color: "text.primary" }} />
+          </IconButton>
+
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ fontWeight: "bold", cursor: "pointer" }}
+            onClick={() => navigate("/")}
+          >
+            My Portfolio
+          </Typography>
+        </Box>
+
+        <Box
+          component="nav"
+          aria-label="Primary"
+          sx={{ display: "flex", alignItems: "center", gap: 1 }}
         >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, }} >
-            {/* Replace with your actual icon component */}
-            <IconButton 
-                onClick={() => router.push('/')}
-                sx={{ '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)', }, }}
-            >
-            {/* Example using AccountCircle icon - replace with your logo */}
-            <AccountCircle fontSize="large" sx={{ color: 'text.primary' }} />
-            </IconButton>
-      
-            {/* Optional text/name beside icon */}
-            <Typography variant="h6" component="div" 
-                sx={{ fontWeight: 'bold', cursor: 'pointer', }}
-                onClick={() => router.push('/')}
-            >
-                My Portfolio
-            </Typography>
-            </Box>
-
-
-            {/* nav buttons */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, }} >
-
-            {/* always have home page */}
-            <Button
-                key={"Home"}
-                onClick={() => router.push('/')}
-                variant="contained"
-                size="large"
-                sx={{
-                mx: 1, // theme.spacing(1)
-                fontWeight: 'medium',
-                letterSpacing: '0.02857em',
- textTransform: 'uppercase',
- color: 'background.paper', // Text color is white
- bgcolor: 'primary.main', // Background color is primary
-                transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
-                '&:hover': {
- bgcolor: 'primary.dark', // Darker shade on hover
- },
- }}
-            >
-                Home
-            </Button>
-
-
-            {pages.map((page) => (
-            <Button
+          <NavButton
+            label="Home"
+            href="/"
+            active={isActive("/")}
+            onNavigate={navigate}
+          />
+          {navPages.map((page) => {
+            const href = `/${page.toLowerCase()}`;
+            return (
+              <NavButton
                 key={page}
-                // href={`/${page.toLowerCase()}`}
-                onClick={() => router.push(`/${page.toLowerCase()}`)}
-                variant="contained"
-                size="large"
-                sx={{
-                mx: 1, // theme.spacing(1)
-                fontWeight: 'medium',
-                letterSpacing: '0.02857em',
- textTransform: 'uppercase',
- color: 'background.paper', // Text color is white
- bgcolor: 'primary.main', // Background color is primary
-                transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
-                '&:hover': {
- bgcolor: 'primary.dark', // Darker shade on hover
- },
- }}
-            >
-                {page}
-            </Button>
-            ))}
-
-            </Box>
-        </Toolbar>
-        </AppBar>
-    );
-    }
+                label={page}
+                href={href}
+                active={isActive(href)}
+                onNavigate={navigate}
+              />
+            );
+          })}
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
+}
