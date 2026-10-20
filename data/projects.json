@@ -1,13 +1,13 @@
 {
   "order": [
     "8",
+    "7",
     "3",
     "6",
     "2",
     "5",
     "0",
-    "4",
-    "7"
+    "4"
   ],
   "projects": [
     {
@@ -144,23 +144,26 @@
     },
     {
       "id": "7",
-      "title": "ClimbLog",
-      "description": "A local-first mobile application for rock climbers to track routes, log send attempts, and sketch route beta overlay paths directly onto photos.",
+      "title": "ClimbLog / VertX",
+      "description": "A local-first mobile app for bouldering sessions that gets every climb into your logbook in seconds. Quick logs for warm-ups and flashes, a dedicated entry for the project you keep falling off, plus grade analytics for volume, efficiency and streaks. Offline-first, with optional sync and a companion marketing site.",
       "image": "/images/climblog-thumbnail.png",
       "technologies": [
         "Expo",
         "React Native",
         "TypeScript",
+        "Expo Router",
         "SQLite",
         "Drizzle ORM",
-        "Clerk",
-        "Supabase"
+        "Supabase",
+        "Astro"
       ],
       "githubUrls": [
-        "https://github.com/nicksteffen/climblog"
+        "https://github.com/nicksteffen/climblog",
+        "https://github.com/nicksteffen/climblog-web"
       ],
       "year": 2026,
-      "category": "Mobile Development"
+      "category": "Mobile Development",
+      "demoUrl": "https://climblog-web.vercel.app"
     }
   ]
 }
