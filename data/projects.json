@@ -1,15 +1,37 @@
 {
   "order": [
+    "8",
     "3",
     "6",
     "2",
     "5",
     "0",
     "4",
-    "1",
     "7"
   ],
   "projects": [
+    {
+      "id": "8",
+      "title": "Text Yourself",
+      "description": "A cross-platform mobile app for texting thoughts, lists, and reminders to your future self. Chat-first interface, scheduled notifications, markdown tags, and offline-first local storage with quiet background sync.",
+      "image": "/images/text-yourself-thumbnail.png",
+      "technologies": [
+        "Expo",
+        "React Native",
+        "TypeScript",
+        "Expo Router",
+        "Drizzle ORM",
+        "Turso",
+        "Clerk",
+        "Expo Notifications"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/text-yourself"
+      ],
+      "year": 2026,
+      "category": "Mobile Development",
+      "demoUrl": "https://text-yourself.vercel.app/"
+    },
     {
       "id": "0",
       "title": "Warframe Market Research",
@@ -27,23 +49,6 @@
       ],
       "year": 2025,
       "category": "Full-Stack"
-    },
-    {
-      "id": "1",
-      "title": "Portfolio Website",
-      "description": "My personal portfolio built with Next.js and MUI",
-      "image": "/images/portfolio-thumbnail.png",
-      "technologies": [
-        "Next.js",
-        "TypeScript",
-        "MUI",
-        "React"
-      ],
-      "githubUrls": [
-        "https://github.com/nicksteffen/portfolio"
-      ],
-      "year": 2023,
-      "category": "Web Development"
     },
     {
       "id": "2",
