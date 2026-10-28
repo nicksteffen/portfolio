@@ -201,6 +201,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 <Button
                   component={NextLink}
                   href={project.demoUrl}
+                  prefetch={false}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="contained"
@@ -217,6 +218,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                   key={url}
                   component={NextLink}
                   href={url}
+                  prefetch={false}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="outlined"
