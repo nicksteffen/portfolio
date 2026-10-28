@@ -1,5 +1,6 @@
 {
   "order": [
+    "9",
     "8",
     "7",
     "3",
@@ -10,6 +11,26 @@
     "4"
   ],
   "projects": [
+    {
+      "id": "9",
+      "title": "Taskwood",
+      "description": "A self-hosted kanban board that lives in your repo. Your coding agent writes Markdown task files while it works; you get a fast local board to drag, prioritize, and review. No database, no account, no sync service.",
+      "image": "/images/taskwood-thumbnail.png",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "React",
+        "Tailwind CSS",
+        "MDX Editor",
+        "chokidar"
+      ],
+      "githubUrls": [
+        "https://github.com/nicksteffen/taskwood"
+      ],
+      "year": 2026,
+      "category": "Developer Tools",
+      "demoUrl": "https://nicksteffen.github.io/taskwood/"
+    },
     {
       "id": "8",
       "title": "Text Yourself",
